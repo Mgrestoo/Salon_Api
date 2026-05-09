@@ -40,11 +40,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'salon',
+    'salon.apps.SalonConfig',
     'rest_framework',
     
     
 ]
+
+REST_FRAMEWORK = {
+'DEFAULT_AUTHENTICATION_CLASSES': (
+'rest_framework_simplejwt.authentication.JWTAuthentication',
+),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -125,3 +131,5 @@ STATIC_URL = 'static/'
 
 
 AUTH_USER_MODEL = 'salon.User'
+
+EMAIL_BACKEND ='django.core.mail.backends.console.EmailBackend'

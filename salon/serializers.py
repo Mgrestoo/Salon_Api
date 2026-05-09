@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from salon.models import  Service, Stylist, Customer, Appointment
+from salon.models import Service,Stylist,Customer,Appointment
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -90,7 +90,7 @@ class AppointmentSerializer(serializers.ModelSerializer):
     
     service_id = serializers.PrimaryKeyRelatedField(
         queryset = Service.objects.all(),
-        source = 'stylist',
+        source = 'service',
         write_only = True
     )
     
