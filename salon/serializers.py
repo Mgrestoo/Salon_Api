@@ -33,9 +33,15 @@ class StylistSerializer(serializers.ModelSerializer):
     email = serializers.CharField(source='user.email', read_only=True)
     
     services = ServiceSerializer(many=True, read_only=True)
+    
+    services_id = serializers.PrimaryKeyRelatedField(
+        queryset=Service.objects.all(),
+        source='services',
+        write_only=True
+    )
     class Meta:
         model = Stylist
-        fields = ['id','username','email','bio','services','created_at']
+        fields = ['id','username','email','bio','services','services_id','created_at']
         read_only_fields = ['id','created_at']                
  
 
