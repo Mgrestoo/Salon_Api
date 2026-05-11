@@ -38,7 +38,8 @@ def send_appointment_confirmation(sender, instance, created, **kwargs):
         
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[customer_email],
-        fail_silently=False
+        fail_silently=False,
+        
         
         
     )

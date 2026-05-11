@@ -30,7 +30,7 @@ class Stylist(models.Model):
 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='cutomer_profile')
-    phone = models.CharField(max_length=12, blank=True)
+    phone = models.CharField(max_length=16, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
