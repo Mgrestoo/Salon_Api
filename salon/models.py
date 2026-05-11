@@ -9,8 +9,6 @@ class User(AbstractUser):
         return self.username
     
 
-User = get_user_model()
-
 class Service(models.Model):
     name = models.CharField(max_length=255, unique=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)    
@@ -29,7 +27,7 @@ class Stylist(models.Model):
         return f'Stylist: {self.user.username}'
 
 class Customer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='cutomer_profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='customer_profile')
     phone = models.CharField(max_length=16, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
