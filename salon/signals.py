@@ -16,30 +16,35 @@ def send_appointment_confirmation(sender, instance, created, **kwargs):
     service_name = instance.service.name
     due_date = instance.due_date
     
-    
-    send_mail(
-        subject=f'Appointment Confirmation - {service_name}',
-        
-        message=f'''
-        Hi {customer_name},
-        
-        Your appointment has been confirmed.
-        
-        Details: 
-            Service : {service_name}
-            Stylist : {stylist_name}
-            due_date : {due_date}
-            Status : Pending
+    try:
+         
+        send_mail(
+            subject=f'Appointment Confirmation - {service_name}',
             
-        We look forward to seeing you,
+            message=f'''
+            Hi {customer_name},
+            
+            Your appointment has been confirmed.
+            
+            Details: 
+                Service : {service_name}
+                Stylist : {stylist_name}
+                due_date : {due_date}
+                Status : Pending
+                
+            We look forward to seeing you,
+            
+            Salon Team.    
+            ''',
+            
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[customer_email],
+            fail_silently=False,
         
-        Salon Team.    
-        ''',
-        
-        from_email=settings.EMAIL_HOST_USER,
-        recipient_list=[customer_email],
-        fail_silently=False,
-        
-        
-        
-    )
+    
+            
+            
+        )
+    except Exception as e: 
+        print('Email failed', e)   
+    
