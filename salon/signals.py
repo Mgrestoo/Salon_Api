@@ -17,6 +17,7 @@ def send_appointment_confirmation(sender, instance, created, **kwargs):
     due_date = instance.due_date
     
     try:
+        
          
         send_mail(
             subject=f'Appointment Confirmation - {service_name}',
