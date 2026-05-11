@@ -12,3 +12,5 @@ python manage.py collectstatic --noinput
 # run all pending migrations
 # this creates/updates database tables on every deploy
 python manage.py migrate
+
+chmod +x build.sh
