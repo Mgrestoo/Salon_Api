@@ -37,7 +37,8 @@ class StylistSerializer(serializers.ModelSerializer):
     services_id = serializers.PrimaryKeyRelatedField(
         queryset=Service.objects.all(),
         source='services',
-        write_only=True
+        write_only=True,
+        many=True
     )
     class Meta:
         model = Stylist
