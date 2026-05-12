@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'salon.apps.SalonConfig',
     'rest_framework',
     'rest_framework_simplejwt',
-    'django_filters'
+    'django_filters',
+    'drf_spectacular'
     
     
 ]
@@ -67,7 +68,25 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
+    
+    'DEFAULT_SCHEMA_CLASS':'drf_spectacular.openapi.AutoSchema'
 }
+SPECTACULAR_SETTINGS = {
+    'TITLE':'Salon API',
+    
+    'DESCRIPTION':
+    '''
+    A complete salon booking API.
+    Customers can book appointments with stylists.
+    Stylists can manage their assigned appointments.
+    Admin manages services.
+    
+    ''',
+    'VERSION':'1.0.0',
+    'SERVE_INCLUDE_SCHEMA':False
+    
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
